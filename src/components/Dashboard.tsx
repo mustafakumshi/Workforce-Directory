@@ -153,10 +153,10 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <div className="dashboard-intro">
-        <p className="dashboard-lead">
+        {/* <p className="dashboard-lead">
           Sort, filter, and paginate below. The grid only mounts visible rows, so
           the same setup stays responsive if you plug in a bigger dataset later.
-        </p>
+        </p> */}
         <div className="kpi-row" role="group" aria-label="Summary figures">
           <div className="kpi-card">
             <span className="kpi-label">Headcount</span>
