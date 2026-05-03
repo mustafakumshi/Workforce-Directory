@@ -1,0 +1,28 @@
+// Imports
+@use './variables' as *;  // Using variables file
+@use './reset' as *;      // Using reset file
+
+// Global styles
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body[data-theme='dark'] {
+  background-color: $dark-page;
+  color: $dark-text;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.error-message {
+    color: $red-color;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+}

@@ -1,0 +1,87 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .header-inner {
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin: 0 auto;
+
+    @include tabletToDesktop {
+      padding: 20px;
+    }
+
+    @include mobile {
+      max-width: 100%;
+      padding: 15px 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+
+      @include mobile {
+        font-size: 24px;
+      }
+    }
+
+    .theme-toggle {
+      display: flex;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: $dark-text;
+      transition: color 0.3s ease;
+
+      @include mobile {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+[data-theme='light'] {
+  .header {
+    background-color: $light-background;
+    color: $light-primary;
+
+    .theme-toggle {
+      color: $light-primary;
+
+      &:hover {
+        color: $light-theme-hover;
+      }
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .header {
+    background-color: $dark-background;
+    color: $dark-primary;
+    border-bottom: 1px solid $dark-border-subtle;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+
+    .theme-toggle {
+      color: $dark-text-muted;
+
+      &:hover {
+        color: $dark-theme-hover;
+      }
+    }
+  }
+}

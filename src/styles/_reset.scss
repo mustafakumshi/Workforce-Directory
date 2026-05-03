@@ -1,0 +1,29 @@
+/* Box-sizing only — avoid global margin/padding:0 on * (breaks third-party layouts like AG Grid) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default link styling */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove default list styling */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* App form controls only (not AG Grid: class always contains "ag-") */
+input:not([class*='ag-']),
+textarea:not([class*='ag-']),
+select:not([class*='ag-']) {
+  border: none;
+  outline: none;
+  font-family: inherit;
+}

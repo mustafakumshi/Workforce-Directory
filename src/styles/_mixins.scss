@@ -1,0 +1,13 @@
+// Mixin for screens between 768px and 1400px (tablet to desktop)
+@mixin tabletToDesktop {
+    @media (min-width: 768px) and (max-width: 1400px) {
+      @content;
+    }
+  }
+  
+  // Mixin for screens smaller than 767px (mobile)
+  @mixin mobile {
+    @media (max-width: 767px) {
+      @content;
+    }
+  }

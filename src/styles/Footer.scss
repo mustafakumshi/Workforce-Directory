@@ -1,0 +1,99 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.footer {
+  font-family: 'Montserrat', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    @include tabletToDesktop {
+      padding: 20px;
+    }
+
+    @include mobile {
+      max-width: 100%;
+      padding: 10px 20px;
+    }
+  }
+
+  .footer-bottom {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      font-size: 14px;
+      margin: 0;
+
+      @include mobile {
+        font-size: 12px;
+      }
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+
+      @include mobile {
+        justify-content: center;
+      }
+
+      a {
+        transition: color 0.3s ease;
+
+        @include mobile {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .footer {
+    background-color: $dark-background;
+    color: $dark-text;
+
+    .footer-bottom p {
+      color: $dark-text;
+    }
+
+    .social-icons a {
+      color: $dark-text;
+    }
+
+    .social-icons a:hover,
+    .social-icons a:active {
+      color: $dark-theme-hover;
+    }
+  }
+}
+
+[data-theme='light'] {
+  .footer {
+    background-color: $light-background;
+    color: $light-text;
+
+    .footer-bottom p {
+      color: $light-text;
+    }
+
+    .social-icons a {
+      color: $light-text;
+    }
+
+    .social-icons a:hover,
+    .social-icons a:active {
+      color: $light-primary;
+    }
+  }
+}

@@ -1,0 +1,166 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.dashboard-container {
+  margin-top: 76px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 24px 24px 28px;
+  min-height: calc(100vh - 192px);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include mobile {
+    margin-top: 57px;
+    padding: 16px 16px 20px;
+  }
+}
+
+.dashboard-intro {
+  margin-bottom: 16px;
+}
+
+.dashboard-lead {
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.45;
+  max-width: 720px;
+}
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 16px;
+
+  @include mobile {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.kpi-card {
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.kpi-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+.kpi-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+// Flex lets AG Grid’s inner 100% height resolve inside the dashboard column (avoids 0-height body)
+.grid-host {
+  width: 100%;
+  height: min(70vh, 620px);
+  min-height: 360px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  > *:first-child {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+  }
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-pill--on {
+  background: rgba(46, 125, 50, 0.15);
+  color: #2e7d32;
+}
+
+.status-pill--off {
+  background: rgba(183, 28, 28, 0.12);
+  color: #b71c1c;
+}
+
+[data-theme='dark'] {
+  .dashboard-container {
+    background-color: transparent;
+    color: $dark-text;
+  }
+
+  .dashboard-lead {
+    color: $dark-text-muted;
+  }
+
+  .kpi-card {
+    background: $dark-elevated;
+    border: 1px solid $dark-border-subtle;
+    box-shadow: none;
+  }
+
+  .kpi-label {
+    color: $dark-text-muted;
+  }
+
+  .kpi-value {
+    color: $dark-primary;
+  }
+
+  .grid-host {
+    border: 1px solid $dark-border-subtle;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  .status-pill--on {
+    background: rgba(129, 199, 132, 0.2);
+    color: #a5d6a7;
+  }
+
+  .status-pill--off {
+    background: rgba(239, 83, 80, 0.18);
+    color: #ef9a9a;
+  }
+}
+
+[data-theme='light'] {
+  .dashboard-container {
+    background-color: $light-dashboard-container;
+    color: $light-text;
+  }
+
+  .dashboard-lead {
+    color: rgba(0, 0, 0, 0.72);
+  }
+
+  .kpi-card {
+    background: $light-background;
+  }
+
+  .kpi-label {
+    color: rgba(0, 0, 0, 0.55);
+  }
+
+  .kpi-value {
+    color: $light-primary;
+  }
+}
